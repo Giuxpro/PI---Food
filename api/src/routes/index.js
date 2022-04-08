@@ -3,7 +3,7 @@ const { Router } = require("express");
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const axios = require("axios").default;
-const { API_KEY, API_KEY_2 } = process.env;
+const { API_KEY, API_KEY_2, API_KEY_3 } = process.env;
 const { Recipe, Dieta } = require("../db");
 
 const router = Router();
@@ -14,7 +14,7 @@ const router = Router();
 const getApiInfo = async () => {
  try{ 
   const apiUrl = await axios.get(
-   `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=15`
+   `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY_3}&addRecipeInformation=true&number=15`
   );
  
   const apiInfo = await apiUrl.data.results.map((e) => {
@@ -23,7 +23,7 @@ const getApiInfo = async () => {
       name: e.title,
       img: e.image,
       summary: e.summary,
-      Score: e.spoonacularScore,
+      score: e.spoonacularScore,
       healthScore: e.healthScore,
       types: e.dishTypes?.map((e) => e),
       diets: e.diets?.map((e) => e),
@@ -99,7 +99,7 @@ router.get("/recipes/:id", async (req, res) => {
 
 router.get("/types", async (req, res) => {
   const dietsApi = await axios.get(
-    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=15`
+    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY_3}&addRecipeInformation=true&number=15`
   );
 
   let diets = [];
@@ -124,16 +124,15 @@ router.get("/types", async (req, res) => {
 
 
 router.post("/recipe", async (req, res) => {
-  const { id, name, summary, Score, healthScore, steps, diets, img, types } =
+  const { id, name, summary, score, healthScore, steps, diets, img, types } =
     req.body;
 
   let createRecipe = await Recipe.create({
-    id,
+    
     name,
     img,
     summary,
-    types,
-    Score,
+    score,
     healthScore,
     steps,
     diets,
