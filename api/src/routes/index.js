@@ -55,7 +55,7 @@ const getAllRecipeInfo = async () => {
   
   const apiInfo = await getApiInfo();
   const dbInfo = await getDbInfo();
-  const totalInfo = typeof apiInfo !== "object"? apiInfo.concat(dbInfo): apiInfo
+  const totalInfo = apiInfo.concat(dbInfo)
 
   return totalInfo;
 
