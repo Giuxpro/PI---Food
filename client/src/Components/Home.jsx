@@ -57,12 +57,14 @@ function handleFilterByOrderName(e){
             <button onClick={e => {handleClick(e)}}>Cargar Recetas</button>
             <div>
                 <select onChange={e => handleFilterByOrderName(e)}>
+                <option value="selec1">Selecciona una Opcion</option>
                     <option value="ascendente">Ascendente</option>
                     <option value="descendente">Descendente</option>
                     <option value="puntuacion+">Mayor Puntuacion</option>
                     <option value="puntuacion-">Menor Puntuacion</option>
                 </select>
                 <select onChange={e => handleFilterDiets(e)}>
+                <option value="selec2">Selecciona una Opcion</option>
                     <option value="todas">Todas</option>
                     <option value="gluten free">gluten free</option>
                     <option value="dairy free">dairy free</option>
@@ -75,6 +77,7 @@ function handleFilterByOrderName(e){
                     <option value="whole 30">whole 30</option>
                 </select>
                 <select onChange={e=> handleFilterRecipeByCreatedDiets(e)}>
+                <option value="selec3">Selecciona una Opcion</option>
                     <option value="existentes">Existentes</option>
                     <option value="creadas">Creadas</option>
                 </select>

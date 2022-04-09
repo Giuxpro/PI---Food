@@ -3,7 +3,8 @@
 const initialState={
     recipes: [],
     backUpRecipes:[],
-    diets: []
+    diets: [],
+    detail:[]
 }
 
 
@@ -93,6 +94,12 @@ function rootReducer(state = initialState, action ){
                     return 0;
                   
              })
+        // eslint-disable-next-line no-fallthrough
+        case "GET_DETAILS":
+            return{
+                ...state,
+                detail: action.payload
+            }
                 
         default:return state;
     }

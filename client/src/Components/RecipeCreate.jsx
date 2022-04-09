@@ -5,8 +5,31 @@ import { getDietsTypes, postRecipes } from "../Actions/index"
 
 
 
-function Validaciones(){
+function Validaciones(input){
+    let errors = {};
+    let regexName = /^\b[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/
+    let regexScore =/^[1-9]?[0-9]{1}$|^100$/;
+    let regexHealthScore = /^[1-9]?[0-9]{1}$|^100$/;
+    let regexSummary =/^[A-Za-z0-9_-]+$/
+    let regexSteps =/^[A-Za-z0-9_-]+$/
+
+    if(!regexName.test(input.name)){
+        errors.name = "Se requiere un Nombre";
+    }
+    else if(!regexScore.test(input.score)){
+        errors.score = "Debe ingresar el puntaje"
+    }
+    else if(!regexHealthScore.test(input.healthScore)){
+        errors.healthScore = "Debe ingresar un puntaje"
+    }
+    else if(!regexSummary.test(input.summary)){
+    errors.summary = "Debe ingresar un texto descriptivo para la Receta"
+    }
+    else if(!regexSteps.test(input.steps)){
+    errors.steps = "Debe ingresar un texto para la Receta"
+    }
     
+    return errors;
 }
 
 
@@ -14,7 +37,8 @@ export default function RecipeCreate(){
     const dispatch = useDispatch();
     const history = useHistory();
     const diets = useSelector( state => state.diets)
-
+    const [errors, setErrors] = useState({})
+    const [btnAct, setBtnAct] = useState(false)
     const [input, setInput]= useState({
         
         name:"",
@@ -32,9 +56,39 @@ export default function RecipeCreate(){
             ...input,
             [e.target.name]: e.target.value
         })
+        setErrors(Validaciones({
+            ...input,
+            [e.target.name]: e.target.value
+        }))
+
+        // if(!e.target.value){
+            // setBtnAct({
+                
+            //     disabled:true
+            // })
+        // }
+        // else{
+        //     setBtnAct({
+        //         disabled: true
+        //     })
+        // }
+         
         console.log(input)
     }
 
+    // function handleBtn(e){
+    //     if(e.target.value === ""){
+    //         setBtnAct({
+    //             disabled:true
+    //         })
+    //     }
+    //     else{
+    //         setBtnAct({
+    //             disabled: false
+    //         })
+    //     }
+    // }
+    
     function handleCheckBox(e){
         if(e.target.checked){
             setInput({
@@ -65,6 +119,8 @@ export default function RecipeCreate(){
         
     }
 
+
+
     useEffect(()=>{
         dispatch(getDietsTypes())
     },[]);
@@ -81,8 +137,12 @@ export default function RecipeCreate(){
                     type="text" 
                     value={input.name}
                     name="name"
+                    placeholder="Ingrese su Nombre..."
                     onChange={e => handleChange(e)}
                     />
+                    {
+                        errors.name && <p>{errors.name}</p>
+                    }
                 </div>
                 <div>
                     <label htmlFor="img">Imagen: </label>
@@ -90,6 +150,7 @@ export default function RecipeCreate(){
                     type="text"
                     value={input.img}
                     name="img"
+                    placeholder="Ingrese el Url de la imagen..."
                     onChange={e => handleChange(e)}
                     />
                 </div>
@@ -99,8 +160,12 @@ export default function RecipeCreate(){
                     type="text" 
                     value={input.score}
                     name="score"
+                    placeholder="Ingrese un puntaje...(0-100)"
                     onChange={e => handleChange(e)}
                     />
+                    {
+                        errors.score && <p>{errors.score}</p>
+                    }
                 </div>
                 <div>
                     <label htmlFor="healthScore">Health Score: </label>
@@ -108,8 +173,12 @@ export default function RecipeCreate(){
                     type="text" 
                     value={input.healthScore}
                     name="healthScore"
+                    placeholder="Ingrese el puntaje de nivel saludable...(0-100)"
                     onChange={e => handleChange(e)}
                     />
+                    {
+                        errors.healthScore && <p>{errors.healthScore}</p>
+                    }
                 </div>
                 <div>
                     <label htmlFor="summary">Summary: </label>
@@ -117,8 +186,12 @@ export default function RecipeCreate(){
                     type="text" 
                     value={input.summary}
                     name="summary"
+                    placeholder="Ingrese un Resumen descriptivo para la Receta..."
                     onChange={e => handleChange(e)}
                     />
+                    {
+                        errors.summary && <p>{errors.summary}</p>
+                    }
                 </div>
                 <div>
                     <label htmlFor="steps">Instructions: </label>
@@ -126,8 +199,12 @@ export default function RecipeCreate(){
                     type="text" 
                     value={input.steps}
                     name="steps"
+                    placeholder="Ingrese los pasos para preparar la Receta..."
                     onChange={e => handleChange(e)}
                     />
+                    {
+                        errors.steps && <p>{errors.steps}</p>
+                    }
                 </div>
 {/* ################## Checkbox type Side ####################*/}
                 <div>
@@ -229,7 +306,7 @@ export default function RecipeCreate(){
                         />Whole 30
                     </label>
                 </div>
-                <button type="submit">Crear</button>
+                <button className="btn" type="submit" disabled={btnAct}>Crear</button>
             </form>
         </div>
     )
