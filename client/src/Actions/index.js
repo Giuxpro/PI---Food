@@ -72,7 +72,7 @@ export function filterByOrderName(payload){
 export function getDetails(id){
     return async function(dispatch){
         try{
-            const json = await axios.get(`http://localhost:3001/recipes${id}`);
+            const json = await axios.get(`http://localhost:3001/recipes/${id}`);
             return dispatch({
                 type: "GET_DETAILS",
                 payload: json.data

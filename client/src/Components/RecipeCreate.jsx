@@ -7,6 +7,7 @@ import { getDietsTypes, postRecipes } from "../Actions/index"
 
 function Validaciones(input){
     let errors = {};
+    
     let regexName = /^\b[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/
     let regexScore =/^[1-9]?[0-9]{1}$|^100$/;
     let regexHealthScore = /^[1-9]?[0-9]{1}$|^100$/;
@@ -28,9 +29,29 @@ function Validaciones(input){
     else if(!regexSteps.test(input.steps)){
     errors.steps = "Debe ingresar un texto para la Receta"
     }
+
     
     return errors;
 }
+
+// function valDisable(input){
+
+//     var disabled;
+//     let inputDisabled = [];
+//     if(!input.name){
+//         inputDisabled.push(input.name)
+//     }
+//     else{
+//         return inputDisabled
+//     }
+
+//     if(inputDisabled){
+//        return disabled =  true
+//     }
+//     else{
+//         return disabled = false
+//     }
+// }
 
 
 export default function RecipeCreate(){
@@ -38,7 +59,9 @@ export default function RecipeCreate(){
     const history = useHistory();
     const diets = useSelector( state => state.diets)
     const [errors, setErrors] = useState({})
-    const [btnAct, setBtnAct] = useState(false)
+     const [btnAct, setBtnAct] = useState(false)
+    
+
     const [input, setInput]= useState({
         
         name:"",
@@ -51,6 +74,8 @@ export default function RecipeCreate(){
 
     })
 
+
+
     function handleChange(e){
         setInput({
             ...input,
@@ -60,34 +85,22 @@ export default function RecipeCreate(){
             ...input,
             [e.target.name]: e.target.value
         }))
-
-        // if(!e.target.value){
-            // setBtnAct({
+        
+        // if(e.target.value === ""){
+        //     setBtnAct({
                 
-            //     disabled:true
-            // })
+        //         disabled:true
+        //     })
         // }
         // else{
         //     setBtnAct({
-        //         disabled: true
+        //         disabled:false
         //     })
         // }
          
         console.log(input)
     }
 
-    // function handleBtn(e){
-    //     if(e.target.value === ""){
-    //         setBtnAct({
-    //             disabled:true
-    //         })
-    //     }
-    //     else{
-    //         setBtnAct({
-    //             disabled: false
-    //         })
-    //     }
-    // }
     
     function handleCheckBox(e){
         if(e.target.checked){
@@ -139,6 +152,7 @@ export default function RecipeCreate(){
                     name="name"
                     placeholder="Ingrese su Nombre..."
                     onChange={e => handleChange(e)}
+                  
                     />
                     {
                         errors.name && <p>{errors.name}</p>
@@ -306,7 +320,22 @@ export default function RecipeCreate(){
                         />Whole 30
                     </label>
                 </div>
-                <button className="btn" type="submit" disabled={btnAct}>Crear</button>
+              
+                {/* <div>
+                  {
+                    errors.name === "" ||
+                    errors.img === "" ||
+                    errors.summary === "" ||
+                    errors.score === "" ||
+                    errors.healthScore === "" ||
+                    errors.steps === "" ||
+                    errors.diets === [] 
+               
+                ?<button className="btn" type="submit" disabled={btnAct}>Crear</button>
+                :<button className="btn" type="submit" disabled={!btnAct}>Crear</button>
+                }
+                </div> */}
+
             </form>
         </div>
     )

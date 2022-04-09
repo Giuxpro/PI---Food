@@ -95,7 +95,7 @@ function handleFilterByOrderName(e){
                currentRecipesList?.map( e =>{
                     return(
                         <div className="Cards" key={e.id}>
-                          <Link to={"/home/"+ e.id}>
+                        <Link to={`/details/${e.id}`}>
                             <Card 
                             
                                 name={e.name}
