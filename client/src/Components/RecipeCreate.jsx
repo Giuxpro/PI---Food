@@ -34,25 +34,6 @@ function Validaciones(input){
     return errors;
 }
 
-// function valDisable(input){
-
-//     var disabled;
-//     let inputDisabled = [];
-//     if(!input.name){
-//         inputDisabled.push(input.name)
-//     }
-//     else{
-//         return inputDisabled
-//     }
-
-//     if(inputDisabled){
-//        return disabled =  true
-//     }
-//     else{
-//         return disabled = false
-//     }
-// }
-
 
 export default function RecipeCreate(){
     const dispatch = useDispatch();
@@ -85,19 +66,7 @@ export default function RecipeCreate(){
             ...input,
             [e.target.name]: e.target.value
         }))
-        
-        // if(e.target.value === ""){
-        //     setBtnAct({
-                
-        //         disabled:true
-        //     })
-        // }
-        // else{
-        //     setBtnAct({
-        //         disabled:false
-        //     })
-        // }
-         
+          
         console.log(input)
     }
 
@@ -321,7 +290,7 @@ export default function RecipeCreate(){
                     </label>
                 </div>
               
-                {/* <div>
+                <div>
                   {
                     errors.name === "" ||
                     errors.img === "" ||
@@ -331,11 +300,11 @@ export default function RecipeCreate(){
                     errors.steps === "" ||
                     errors.diets === [] 
                
-                ?<button className="btn" type="submit" disabled={btnAct}>Crear</button>
-                :<button className="btn" type="submit" disabled={!btnAct}>Crear</button>
+                    ?<button className="btn" type="submit" disabled={false} onChange={e =>handleChange(e)}>Crear</button>
+                    :<button className="btn" type="submit" disabled={true} onChange={e =>handleChange(e)}>Crear</button>
                 }
-                </div> */}
-
+                </div>
+{/* <button className="btn" type="submit" disabled={btnAct}>Crear</button> */}
             </form>
         </div>
     )

@@ -34,11 +34,11 @@ function rootReducer(state = initialState, action ){
         case "FILTER_BY_DIETS":
             
             const allRecipes = state.backUpRecipes
-            const filteredDiets = action.payload === "todas"? allRecipes : allRecipes.filter(e => e.diets.includes(action.payload) )
+            const filteredDiets = action.payload === "todas"? allRecipes : allRecipes.filter(e => e.diets?.includes(action.payload) )
             return{
                 ...state,
                 recipes: filteredDiets,
-                // res: console.log(filteredDiets)
+                res: console.log(filteredDiets)
             }
         case "FILTER_CREATED_DIETS":
             const allRecipes2 = state.backUpRecipes
@@ -53,10 +53,10 @@ function rootReducer(state = initialState, action ){
 
             sortName === "ascendente"
             ? state.recipes.sort((a,b)=>{
-                if(a.name > b.name){
+                if(a.name.toUpperCase() > b.name.toUpperCase()){
                     return 1;
                 }
-                if(a.name < b.name){
+                if(a.name.toUpperCase() < b.name.toUpperCase()){
                     return -1;
                 }
                 
@@ -64,10 +64,10 @@ function rootReducer(state = initialState, action ){
                 
             }):sortName === "descendente"
              ? state.recipes.sort((a,b)=>{
-                if(a.name > b.name){
+                if(a.name.toUpperCase() > b.name.toUpperCase()){
                     return -1;
                 }
-                if(a.name < b.name){
+                if(a.name.toUpperCase() < b.name.toUpperCase()){
                     return 1;
                 }
                 
