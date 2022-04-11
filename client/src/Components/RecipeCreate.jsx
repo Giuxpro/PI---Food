@@ -319,7 +319,7 @@ export default function RecipeCreate(){
                     </label>
                 </div>
               
-                { /* <div>
+                {/* <div>
                    {
                     errors.name ||
                     errors.img ||
@@ -328,10 +328,10 @@ export default function RecipeCreate(){
                     errors.healthScore ||
                     errors.steps  ||
                     errors.diets
-                    ?<button className="btn" >Crear</button>
-                    :<button className="btn" disabled={btnAct} type="submit"onChange={e => handleChange(e)}>Crear</button>
+                    ?<button className="btn" disabled={true}>Crear</button>
+                    :<button className="btn"  type="submit"onChange={e => handleChange(e)}>Crear</button>
                 }
-                </div> */}
+                </div>  */}
 <button className="btn" type="submit" disabled={btnAct}>Crear</button>
             </form>
         </div>
