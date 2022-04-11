@@ -14,7 +14,7 @@ const router = Router();
 const getApiInfo = async () => {
  try{ 
   const apiUrl = await axios.get(
-   `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=15`
+   `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY_2}&addRecipeInformation=true&number=15`
   );
  
   const apiInfo = await apiUrl.data.results.map((e) => {
@@ -99,7 +99,7 @@ router.get("/recipes/:id", async (req, res) => {
 
 router.get("/types", async (req, res) => {
   const dietsApi = await axios.get(
-    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&addRecipeInformation=true&number=15`
+    `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY_2}&addRecipeInformation=true&number=15`
   );
 
   let diets = [];
