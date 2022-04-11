@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux"
 import { getRecipeByName } from "../Actions";
+import styles from "./SearchBar.module.css";
 
  
 export default function SearchBar(){
@@ -21,7 +22,7 @@ function handleSubmit(e){
 }
 
     return(
-        <div>
+        <div className={styles.pagHome} >
             <input 
             type="text" 
             placeholder="Buscar..."

@@ -40,7 +40,7 @@ export default function RecipeCreate(){
     const history = useHistory();
     const diets = useSelector( state => state.diets)
     const [errors, setErrors] = useState({})
-     const [btnAct, setBtnAct] = useState(false)
+     const [btnAct, setBtnAct] = useState(true)
     
 
     const [input, setInput]= useState({
@@ -66,6 +66,7 @@ export default function RecipeCreate(){
             ...input,
             [e.target.name]: e.target.value
         }))
+        
           
         console.log(input)
     }
@@ -97,7 +98,9 @@ export default function RecipeCreate(){
             diets:[],
         })
 
+        
         history.push("/home")
+        
         
     }
 
@@ -292,16 +295,15 @@ export default function RecipeCreate(){
               
                 <div>
                   {
-                    errors.name === "" ||
-                    errors.img === "" ||
-                    errors.summary === "" ||
-                    errors.score === "" ||
-                    errors.healthScore === "" ||
-                    errors.steps === "" ||
-                    errors.diets === [] 
-               
-                    ?<button className="btn" type="submit" disabled={false} onChange={e =>handleChange(e)}>Crear</button>
-                    :<button className="btn" type="submit" disabled={true} onChange={e =>handleChange(e)}>Crear</button>
+                    errors.name ||
+                    errors.img ||
+                    errors.summary ||
+                    errors.score ||
+                    errors.healthScore ||
+                    errors.steps  ||
+                    errors.diets
+                    ?<button className="btn" >Crear</button>
+                    :<button className="btn" disabled type="submit"onChange={e => handleChange(e)}>Crear</button>
                 }
                 </div>
 {/* <button className="btn" type="submit" disabled={btnAct}>Crear</button> */}
