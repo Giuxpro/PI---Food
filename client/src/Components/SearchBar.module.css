@@ -1,0 +1,31 @@
+.pagHome{
+    display: flex;
+    justify-content: center;
+}
+.searchInput{
+    font-size: 1rem;
+    height: 25px;
+    width: 300px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    padding: 5px 35px 5px 10px;
+    border: 1px solid white;
+    position: relative;
+
+}
+.searchInput:focus{
+    outline: none;
+    border: 1px solid rgb(245, 245, 244)
+}
+.searchBtn{
+    
+    right: 0;
+    top:0;
+    cursor: pointer;
+    width: 60px;
+    color: aliceblue;
+    border: solid 1px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background: none;
+}

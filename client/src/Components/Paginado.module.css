@@ -17,5 +17,5 @@ li:hover{
     width: 17px;
 }
 .btnpaginado:focus{
-    background-color: rgb(91, 96, 96);
+    background-color:antiquewhite;
 }

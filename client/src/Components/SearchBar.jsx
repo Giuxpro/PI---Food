@@ -24,11 +24,12 @@ function handleSubmit(e){
     return(
         <div className={styles.pagHome} >
             <input 
+             className={styles.searchInput}
             type="text" 
             placeholder="Buscar..."
             onChange={e=> handleInputChange(e)}
             />
-            <button type="submit" onClick={e => handleSubmit(e)}>Buscar</button>
+            <button className={styles.searchBtn} type="submit" onClick={e => handleSubmit(e)}>Buscar</button>
         </div>
     )
 }

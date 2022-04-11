@@ -30,7 +30,7 @@ function Validaciones(input){
     errors.steps = "Debe ingresar un texto para la Receta"
     }
 
-    
+
     return errors;
 }
 
@@ -38,7 +38,7 @@ function Validaciones(input){
 export default function RecipeCreate(){
     const dispatch = useDispatch();
     const history = useHistory();
-    const diets = useSelector( state => state.diets)
+    // const diets = useSelector( state => state.diets)
     const [errors, setErrors] = useState({})
      const [btnAct, setBtnAct] = useState(true)
     
@@ -66,6 +66,19 @@ export default function RecipeCreate(){
             ...input,
             [e.target.name]: e.target.value
         }))
+        // if(errors.name && 
+        //     errors.img && 
+        //     errors.score && 
+        //     errors.summary && 
+        //     errors.healthScore && 
+        //     errors.steps &&
+        //     errors.diets){
+        //     setBtnAct(false) 
+        //     }
+        //     else{
+        //     setBtnAct(true)
+        //     }
+        
         
           
         console.log(input)
@@ -78,7 +91,20 @@ export default function RecipeCreate(){
                 ...input,
                 diets: [...input.diets, e.target.value]
             })
+          setErrors(Validaciones({
+              ...input,
+              [e.target.name]: e.target.value
+          }))
+          if(errors){
+            setBtnAct(false) 
+            }
+          else if(errors){
+            setBtnAct(true)
+            }
+         
         }
+        
+        
         console.log(input)
     }
 
@@ -95,7 +121,7 @@ export default function RecipeCreate(){
             score:"",
             healthScore:"",
             steps:"",
-            diets:[],
+            diets:"",
         })
 
         
@@ -113,7 +139,7 @@ export default function RecipeCreate(){
     return(
         <div>
             <Link to="/home"><button>Atras</button></Link>
-            <h1>Crea Tu Propia Reseta</h1>
+            <h1>Crea Tu Propia Receta</h1>
 {/* ################## Text type Side ####################*/}
             <form onSubmit={e => handleSubmit(e)}>
                 <div>
@@ -293,8 +319,8 @@ export default function RecipeCreate(){
                     </label>
                 </div>
               
-                <div>
-                  {
+                { /* <div>
+                   {
                     errors.name ||
                     errors.img ||
                     errors.summary ||
@@ -303,10 +329,10 @@ export default function RecipeCreate(){
                     errors.steps  ||
                     errors.diets
                     ?<button className="btn" >Crear</button>
-                    :<button className="btn" disabled type="submit"onChange={e => handleChange(e)}>Crear</button>
+                    :<button className="btn" disabled={btnAct} type="submit"onChange={e => handleChange(e)}>Crear</button>
                 }
-                </div>
-{/* <button className="btn" type="submit" disabled={btnAct}>Crear</button> */}
+                </div> */}
+<button className="btn" type="submit" disabled={btnAct}>Crear</button>
             </form>
         </div>
     )
