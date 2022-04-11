@@ -15,7 +15,7 @@ export default function Paginado({recipesPerPage, allRecipes, paginado}){
                 {
                     pageNumbers && pageNumbers.map(pag =>(
                         <li key={pag}>
-                            <button onClick={()=> {paginado(pag)}}>{pag}</button>
+                            <button className={styles.btnpaginado} onClick={()=> {paginado(pag)}}>{pag}</button>
                         </li>
                     ))
                 }

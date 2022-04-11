@@ -1,15 +1,21 @@
-/* .paginado{
+.paginado{
     display: flex;
     justify-content: center;
     text-decoration: none;
     margin: 10px ;
     list-style: none;
-   
-} */
-/* li{
+} 
+li{
     margin: 3px;
     
-} */
-/* li:hover{
+    
+}
+li:hover{
     transform: scale(1.15);
-} */
+}
+.btnpaginado{
+    width: 17px;
+}
+.btnpaginado:focus{
+    background-color: rgb(91, 96, 96);
+}

@@ -1,3 +1,30 @@
+.container{
+    min-height: 100vh;
+    background-image: url("../Img/foodorig.webp");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.title{
+    color: bisque;
+    transition: all 300ms;
+}
+.h1Home{
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.title:hover{
+    opacity: 0.8;
+    transform: scale(1.10);
+}
+.sideCont{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    height: 900px;
+    margin-top: 15px;
+    
+}
 .btnYoptions{
     display: flex;
     flex-direction: column;
@@ -6,7 +33,9 @@
     height: 300px;
     justify-content: center;
     border-radius: 10px;
-    margin-left: 10px;
+    margin-left: 25px;
+    background-image: url("../Img/foodside.jpg");
+    background-size: cover;
 }
 .crearYCargar{
     margin-bottom: 20px;
@@ -30,4 +59,23 @@
     border-radius: 10px;
     cursor: pointer;
     padding-left: 5px;
+}
+.navPag{
+    display: flex;
+    justify-content: center;
+}
+.cards{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-around;
+    width: 60%;
+    margin-left: 50px;
+    height: 700px;  
+}
+.linkHomeCard{
+    text-decoration: none;
+    color: black;
+    font-size: 11px;
 }
