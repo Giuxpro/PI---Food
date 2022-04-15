@@ -17,7 +17,7 @@ export default function Home() {
 
   const [orden, setOrden] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [recipesPerPage, setRecipesPerPage] = useState(9);
+  const [recipesPerPage, setRecipesPerPage] = useState(12);
   const indexLastRecipe = currentPage * recipesPerPage;
   const indexFirstRecipe = indexLastRecipe - recipesPerPage;
   const currentRecipesList = allRecipes.slice(
@@ -74,9 +74,9 @@ export default function Home() {
               <div className={styles.btnYoptions} >
                   <div className={styles.crearYCargar}>
                       <Link to="/recipe">
-                      <button>Crear Receta</button>
+                      <button className={styles.homeBtn1}>Crear Receta</button>
                       </Link>
-                      <button onClick={(e) => {handleClick(e)}}>Cargar Recetas</button>
+                      <button className={styles.homeBtn2} onClick={(e) => {handleClick(e)}}>Cargar Recetas</button>
                   </div>
                   <div className={styles.selectOptions}>
                       <select onChange={(e) => handleFilterByOrderName(e)}>

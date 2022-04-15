@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.9ba29f13.chunk.css",
+    "main.js": "/static/js/main.161d99e3.chunk.js",
+    "main.js.map": "/static/js/main.161d99e3.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.ba9b9711.js",
+    "runtime-main.js.map": "/static/js/runtime-main.ba9b9711.js.map",
+    "static/js/2.be5d3761.chunk.js": "/static/js/2.be5d3761.chunk.js",
+    "static/js/2.be5d3761.chunk.js.map": "/static/js/2.be5d3761.chunk.js.map",
+    "static/js/3.9d9d2530.chunk.js": "/static/js/3.9d9d2530.chunk.js",
+    "static/js/3.9d9d2530.chunk.js.map": "/static/js/3.9d9d2530.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.9ba29f13.chunk.css.map": "/static/css/main.9ba29f13.chunk.css.map",
+    "static/js/2.be5d3761.chunk.js.LICENSE.txt": "/static/js/2.be5d3761.chunk.js.LICENSE.txt",
+    "static/media/LandingPage.module.css": "/static/media/f2.45930559.jpg",
+    "static/media/Home.module.css": "/static/media/foodside.882b8fc8.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ba9b9711.js",
+    "static/js/2.be5d3761.chunk.js",
+    "static/css/main.9ba29f13.chunk.css",
+    "static/js/main.161d99e3.chunk.js"
+  ]
+}

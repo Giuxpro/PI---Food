@@ -10,7 +10,7 @@ export default function LandingPage(){
             <div className={styles.imgLan}>
             <h1>Welcome To World of Food</h1>
             <Link to="/home">
-                <button>Ingresar</button>
+                <button className={styles.landingBtn}>Ingresar</button>
             </Link>
             </div>
         </div>

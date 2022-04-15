@@ -2,7 +2,7 @@ import React, {useState,useEffect} from "react";
 import { Link, useHistory } from "react-router-dom";
 import { useDispatch,useSelector } from "react-redux";
 import { getDietsTypes, postRecipes } from "../Actions/index"
-
+import styles from "./RecipeCreate.module.css"
 
 
 function Validaciones(input){
@@ -40,9 +40,7 @@ export default function RecipeCreate(){
     const history = useHistory();
     // const diets = useSelector( state => state.diets)
     const [errors, setErrors] = useState({})
-     const [btnAct, setBtnAct] = useState(true)
-    
-
+    const [btnAct, setBtnAct] = useState(true)
     const [input, setInput]= useState({
         
         name:"",
@@ -66,21 +64,8 @@ export default function RecipeCreate(){
             ...input,
             [e.target.name]: e.target.value
         }))
-        // if(errors.name && 
-        //     errors.img && 
-        //     errors.score && 
-        //     errors.summary && 
-        //     errors.healthScore && 
-        //     errors.steps &&
-        //     errors.diets){
-        //     setBtnAct(false) 
-        //     }
-        //     else{
-        //     setBtnAct(true)
-        //     }
-        
-        
-          
+      
+      
         console.log(input)
     }
 
@@ -98,7 +83,7 @@ export default function RecipeCreate(){
           if(errors){
             setBtnAct(false) 
             }
-          else if(errors){
+          else{
             setBtnAct(true)
             }
          
@@ -137,11 +122,17 @@ export default function RecipeCreate(){
     },[]);
 
     return(
-        <div>
-            <Link to="/home"><button>Atras</button></Link>
-            <h1>Crea Tu Propia Receta</h1>
+        <div className={styles.recipeCreateContainer}>
+            <div>
+                <Link to="/home"><button>Atras</button></Link>
+            </div>
+            <div>
+                <h1>Crea Tu Propia Receta</h1>
+            </div>
+
 {/* ################## Text type Side ####################*/}
-            <form onSubmit={e => handleSubmit(e)}>
+        <div className={styles.formContainer}>
+            <form className={styles.formBox} onSubmit={e => handleSubmit(e)}>
                 <div>
                     <label htmlFor="name">Name: </label>
                     <input 
@@ -185,7 +176,7 @@ export default function RecipeCreate(){
                     type="text" 
                     value={input.healthScore}
                     name="healthScore"
-                    placeholder="Ingrese el puntaje de nivel saludable...(0-100)"
+                    placeholder="Nivel saludable...(0-100)"
                     onChange={e => handleChange(e)}
                     />
                     {
@@ -219,8 +210,9 @@ export default function RecipeCreate(){
                     }
                 </div>
 {/* ################## Checkbox type Side ####################*/}
+                    <div>Diets Type: </div>
+            <div className={styles.checkBox}>
                 <div>
-                    <label>Diets Type: </label>
                     <label htmlFor="gluten free">
                         <input 
                         type="checkbox" 
@@ -332,8 +324,10 @@ export default function RecipeCreate(){
                     :<button className="btn"  type="submit"onChange={e => handleChange(e)}>Crear</button>
                 }
                 </div>  */}
-<button className="btn" type="submit" disabled={btnAct}>Crear</button>
+            </div>
+                    <button className="btn" type="submit" disabled={btnAct}>Crear</button>
             </form>
+        </div>
         </div>
     )
 }
